@@ -3,13 +3,14 @@ import 'dotenv/config'
 import express from 'express'
 
 import { personRouter } from './routers/person-router.js'
+import { locationRouter } from './routers/location-router.js'
 
 /* create an express app and use JSON */
 const app = new express()
 app.use(express.json())
 
 // bring in some routes
-app.use('/person', personRouter)
+app.use('/person', personRouter, locationRouter)
 
 app.use('/search', personRouter)
 
