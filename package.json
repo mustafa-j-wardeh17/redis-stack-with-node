@@ -4,7 +4,8 @@
   "description": "Started code for Redis OM + Express workshop.",
   "type": "module",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "lint": "standard --fix"
   },
   "author": "Guy Royse <guy@guyroyse.com> (http://guyroyse.com/)",
   "license": "MIT",

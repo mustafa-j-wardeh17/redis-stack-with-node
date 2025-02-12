@@ -1,6 +1,20 @@
-import { Client } from "redis-om";
+import { createClient } from 'redis';
 
-const url = process.env.REDIS_URL;
-const client = await new Client().open(url);
+const client = createClient({
+    username: 'default',
+    password: process.env.REDIS_PW,
+    socket: {
+        host: process.env.REDIS_HOST,
+        port: parseInt(process.env.REDIS_PORT || '16850')
+    }
+});
 
-export default client;
+
+client.on('error', err => console.log('Redis Client Error', err));
+
+
+if (!client.isOpen) {
+    await client.connect();
+}
+
+export { client };
